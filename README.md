@@ -10,24 +10,42 @@ The project is structured under `/src/main/kotlin/com.joshxee.backtothecheckout`
 core
 ├── domain
 │   ├── Checkout.kt
-│   └── Product.kt
+│   └── Item.kt
 ├── handler
 │   └── GetCheckoutPriceHandler.kt
 └── rule
-    ├── StandardPricingRule.kt
-    └── MultiPricingRule.kt
+    ├── CartPricingRule.kt
+    └── XPricingRule.kt
 ```
-handler: Entry point for this exercise. This directory contains the GetCheckoutPriceHandler.kt file. This file contains the main function that is used to calculate the total price of the Checkout.
-rules: This directory contains the StandardPricingRule.kt and MultiPricingRule.kt files. These files define the pricing rules that can be applied to the Checkout.
-domain: This directory contains the Checkout.kt and Product.kt files. These files define the Checkout and Product classes.
+ - `domain` contains the domain classes for the checkout system.
+ - `handler` contains the handler for the checkout system. In a production environment, this would be called by the adaptor layer, e.g. a controller in a web application.
+ - `rule` contains the interface and concrete pricing rules for the checkout system.
 
 ## Setup and Running
 
-For the purposes of the exercise, there are application entry points in the form of unit tests. The main entry point is the `GetCheckoutPriceHandlerTest` class.
+### Pre-requisites
+ - Kotlin
+ - Gradle
+ - Java 17
 
-1. Clone the repository.
-2. Open the project in your preferred IDE. Preferred IDE is IntelliJ IDEA.
-3. Run the `GetCheckoutPriceHandlerTest` class.
+> It is recommended to use intelliJ IDEA to run the project.
+
+The file `BackToTheChackoutApplication.kt` runs a simple example of the checkout system. To run the example, simply run the main function in this file.
+You can also run the command:
+
+```
+./gradlew bootrun
+```
+
+## Running the tests
+
+> It is recommended to use intelliJ IDEA to run the tests.
+ 
+The tests can also be run using the following command:
+
+```
+./gradlew test
+```
 
 ## License
 

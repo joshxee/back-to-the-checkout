@@ -23,15 +23,11 @@ domain: This directory contains the Checkout.kt and Product.kt files. These file
 
 ## Setup and Running
 
-To set up and run the project, follow these steps:
+For the purposes of the exercise, there are application entry points in the form of unit tests. The main entry point is the `GetCheckoutPriceHandlerTest` class.
 
 1. Clone the repository.
-2. Open the project in IntelliJ IDEA 2023.3.3.
-3. Run the project using the built-in Gradle wrapper.
-
-## Contributing
-
-Contributions are welcome. Please open an issue or submit a pull request.
+2. Open the project in your preferred IDE. Preferred IDE is IntelliJ IDEA.
+3. Run the `GetCheckoutPriceHandlerTest` class.
 
 ## License
 

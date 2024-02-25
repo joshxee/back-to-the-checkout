@@ -15,7 +15,7 @@ core
 │   └── GetCheckoutPriceHandler.kt
 └── rule
     ├── CartPricingRule.kt
-    └── XPricingRule.kt
+    └── ExamplePricingRule.kt
 ```
  - `domain` contains the domain classes for the checkout system.
  - `handler` contains the handler for the checkout system. In a production environment, this would be called by the adaptor layer, e.g. a controller in a web application.

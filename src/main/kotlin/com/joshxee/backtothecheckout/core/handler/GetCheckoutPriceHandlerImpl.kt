@@ -12,7 +12,7 @@ class GetCheckoutPriceHandlerImpl : GetCheckoutPriceHandler {
     val (subtotal, standardPriceItems) = pricingRules.fold(
       Pair(0.0, checkout.cart)
     ) { (currentSubtotal, currentCart), rule ->
-      val (newRuleCosts, remainingCart) = rule(currentCart)
+      val (newRuleCosts, remainingCart) = rule.apply(currentCart)
       Pair(currentSubtotal + newRuleCosts, remainingCart)
     }
 

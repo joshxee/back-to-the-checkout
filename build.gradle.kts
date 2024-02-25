@@ -22,6 +22,9 @@ dependencies {
   implementation("org.springframework.boot:spring-boot-starter")
   implementation("org.jetbrains.kotlin:kotlin-reflect")
   testImplementation("org.springframework.boot:spring-boot-starter-test")
+  // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+  implementation("org.apache.commons:commons-lang3:3.0")
+
 }
 
 tasks.withType<KotlinCompile> {

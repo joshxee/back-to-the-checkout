@@ -29,7 +29,7 @@ class BackToTheCheckoutApplication {
     val banana = Item("B", 0.30)
     val carrot = Item("C", 0.25)
     val cart = listOf(apple, banana, carrot, apple, apple)
-    println("Cart: $apple, $banana, $carrot x 3")
+    println("Cart: $apple x3, $banana, $carrot")
 
     val multiBuyRule = MultiCartPricingRule("A", 0.60, 1.0, 3)
     println("Rules: MultiCartPricingRule(\"A\", 0.60, 1.0, 3)")

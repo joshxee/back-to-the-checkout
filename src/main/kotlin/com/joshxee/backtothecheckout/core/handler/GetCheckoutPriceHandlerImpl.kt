@@ -1,6 +1,7 @@
 package com.joshxee.backtothecheckout.core.handler
 
 import com.joshxee.backtothecheckout.core.domain.Checkout
+import com.joshxee.backtothecheckout.core.domain.PricedCart
 import org.springframework.stereotype.Component
 
 @Component
@@ -9,14 +10,14 @@ class GetCheckoutPriceHandlerImpl : GetCheckoutPriceHandler {
     val pricingRules = checkout.pricingRules
 
     // Apply pricing rules to the cart
-    val (subtotal, standardPriceItems) = pricingRules.fold(
-      Pair(0.0, checkout.cart)
-    ) { (currentSubtotal, currentCart), rule ->
-      val (newRuleCosts, remainingCart) = rule.apply(currentCart)
-      Pair(currentSubtotal + newRuleCosts, remainingCart)
+    val pricedCart = pricingRules.fold(
+      PricedCart(checkout.cart, 0.0)
+    ) { currentCart, pricingRule ->
+      val updatedCart = pricingRule.apply(currentCart.cart)
+      PricedCart(updatedCart.cart, currentCart.price + updatedCart.price)
     }
 
     // Calculate the total price by adding the standard price items
-    return subtotal + standardPriceItems.sumOf { it.price }
+    return pricedCart.price + pricedCart.cart.sumOf { it.price }
   }
 }

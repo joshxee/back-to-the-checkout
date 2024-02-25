@@ -2,6 +2,7 @@ package com.joshxee.backtothecheckout.core.handler
 
 import com.joshxee.backtothecheckout.core.domain.Checkout
 import com.joshxee.backtothecheckout.core.domain.Item
+import com.joshxee.backtothecheckout.core.domain.PricedCart
 import com.joshxee.backtothecheckout.core.rule.CartPricingRule
 import org.apache.commons.lang3.RandomStringUtils
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -49,17 +50,12 @@ class GetCheckoutPriceHandlerImplTest {
     )
 
     // Given
-    given(pricingRule.apply(cart)).willReturn(Pair(rulesPrice, listOf()))
+    given(pricingRule.apply(cart)).willReturn(PricedCart(listOf(), rulesPrice))
 
     // When
     val result = tested.handle(checkout)
 
     // Then
     assertEquals(rulesPrice, result)
-  }
-
-  @Test
-  fun `should add rules price and base price when handle`() {
-    TODO("Not yet implemented")
   }
 }

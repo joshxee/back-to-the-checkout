@@ -1,6 +1,7 @@
 package com.joshxee.backtothecheckout.core.rule
 
 import com.joshxee.backtothecheckout.core.domain.Cart
+import com.joshxee.backtothecheckout.core.domain.PricedCart
 
 interface CartPricingRule {
     /**
@@ -11,5 +12,5 @@ interface CartPricingRule {
      * @param items The cart to apply the pricing rule to
      * @return A pair of the total price and the new cart
      */
-    fun apply(items: Cart): Pair<Double, Cart>
+    fun apply(items: Cart): PricedCart
 }

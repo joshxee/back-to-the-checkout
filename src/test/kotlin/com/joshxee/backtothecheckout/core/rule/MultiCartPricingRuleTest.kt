@@ -1,15 +1,12 @@
 package com.joshxee.backtothecheckout.core.rule
 
-import com.joshxee.backtothecheckout.core.domain.Cart
 import com.joshxee.backtothecheckout.core.domain.Item
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import org.junit.jupiter.params.provider.ValueSource
 import java.util.stream.Stream
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -34,8 +31,8 @@ class MultiCartPricingRuleTest {
     val result = tested.apply(cart)
 
     // Then
-    assertEquals(0.0, result.first)
-    assertEquals(cart, result.second)
+    assertEquals(0.0, result.price)
+    assertEquals(cart, result.cart)
   }
 
   @ParameterizedTest
@@ -59,8 +56,8 @@ class MultiCartPricingRuleTest {
     val result = tested.apply(cart)
 
     // Then
-    assertEquals(discountPrice, result.first)
-    assertEquals(listOf<Item>(), result.second)
+    assertEquals(discountPrice, result.price)
+    assertEquals(listOf<Item>(), result.cart)
   }
 
   private fun applyToSingleSku(): Stream<Arguments> {
@@ -92,8 +89,8 @@ class MultiCartPricingRuleTest {
     val result = tested.apply(cart)
 
     // Then
-    assertEquals(180.0, result.first)
-    assertEquals(listOf<Item>(), result.second)
+    assertEquals(180.0, result.price)
+    assertEquals(listOf<Item>(), result.cart)
   }
 
   @Test
@@ -117,7 +114,7 @@ class MultiCartPricingRuleTest {
     val result = tested.apply(cart)
 
     // Then
-    assertEquals(130.0, result.first)
-    assertEquals(listOf(Item(sku = "B", price = 50.0)), result.second)
+    assertEquals(130.0, result.price)
+    assertEquals(listOf(Item(sku = "B", price = 50.0)), result.cart)
   }
 }
